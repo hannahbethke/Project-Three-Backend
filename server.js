@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
-const songRouter = require('./controllers/songs');
+const photoRouter = require('./controllers/photos');
 require('dotenv').config();
 
 const { DATABASE_URL } = process.env;
@@ -19,10 +19,10 @@ app.use('/public', express.static('public'));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-app.use('/api/songs', songRouter);
+app.use('/api/photos', photoRouter);
 
 app.get('/', (req, res) => {
-    res.redirect('/api/songs');
+    res.redirect('/api/photos');
 });
 
 app.get('/*', (req, res) => {
